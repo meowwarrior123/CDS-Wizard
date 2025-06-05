@@ -70,7 +70,3 @@ get_url_of_college_cdsData = Tool(
     func = getCDSUrl,
     description = 'this tool is used to extract the url of the latest CDS dataset for specific colleges'
 )
-
-# search = DuckDuckGoSearchRun()
-# result = search.invoke("what is UVA's primary research focus?")
-# print(result)
