@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/chrisnam/Desktop/ai agents example/venv"
+set -gx VIRTUAL_ENV "/Users/chrisnam/Documents/GitHub/CDS-Wizard/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

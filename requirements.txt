@@ -8,6 +8,6 @@ bs4
 httpx
 pymupdf
 requests
-duckduckgo-search
 anthropic
 lxml
+pprint
