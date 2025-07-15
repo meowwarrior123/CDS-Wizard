@@ -18,7 +18,7 @@ load_dotenv()
 
 # for request headers
 # REDACT usr agent later
-userAgent = 'Your user agent here'
+userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36'
 headers = {
     'user-agent': userAgent
 }
@@ -89,7 +89,7 @@ def attemptCdsRetrieval(links):
 def getCDS(collegeName: str):
     
     # retrieving CDS
-    braveApiKey = "your api key here"
+    braveApiKey = "BSAK_U5UCCfGdfQkj6lUQ9tKGwiRaUV"
     search = BraveSearch.from_api_key(api_key=braveApiKey, search_kwargs={"count": 5})
     response = search.run(f"{collegeName} latest CDS data PDF")
     links = []
@@ -110,7 +110,7 @@ def getCDS(collegeName: str):
         try:
             alternateSol = attemptCdsRetrieval(links)
             # college score card
-            scorecardApiKey = "your api key here"
+            scorecardApiKey = "BWM2MyLyUEQsxuNtRsPNEeNwTGF9HAGcLt5DufIn"
             baseURL = f"https://api.data.gov/ed/collegescorecard/v1/schools?api_key={scorecardApiKey}&"
 
             v1 = f"school.name={collegeName}"
@@ -322,6 +322,7 @@ get_commonapp_essay_tips = Tool(
     func = getEssayTips,
     description= "ths tool is used to obtain detailed tips/insight on writing common apps essays for specific colleges"
 )
+
 ################################################################################
 #TESTING/DEBUGGING
 ################################################################################
@@ -332,6 +333,7 @@ get_commonapp_essay_tips = Tool(
 # common app essay helper
 
 # testing scorecard API
+# scorecardApiKey = "BWM2MyLyUEQsxuNtRsPNEeNwTGF9HAGcLt5DufIn"
 # requestUrl = f"https://api.data.gov/ed/collegescorecard/v1/schools?api_key={scorecardApiKey}&school.name=columbia university&fields=school.name,latest.admissions.admission_rate.overall,latest.admissions.sat_scores.average.by_ope_id"
 # response = requests.get(requestUrl, headers=headers)
 # print(json.loads(response.content).get('results'))

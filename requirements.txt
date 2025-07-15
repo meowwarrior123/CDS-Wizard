@@ -10,4 +10,4 @@ pymupdf
 requests
 anthropic
 lxml
-pprint
+duckduckgo-search

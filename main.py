@@ -87,20 +87,118 @@ invokedAgent = create_tool_calling_agent(
 executor = AgentExecutor(agent=invokedAgent,tools=toolSet,verbose=True)
 
 # test value
-college = 'COLLEGE'
-grade = 'GRADE'
+college = 'Carnegie Mellon university'
+grade = 'junior'
 coursework = """
-COURSEWORK
+2022-2023 | Out of DistrictGrade 9 | Fall
+index: Schl, Year, Tm, Grd, Crs ID, Std Course Title, Mark
+975, 2022-2023, 1, 9, 2410, Korean 1A, C 
+975, 2022-2023, 1, 9, 3047, Math IA, C 
+975, 2022-2023, 1, 9, 40039, PE Course 1A, A 
+975, 2022-2023, 1, 9, 6007, Social Science, C 
+975, 2022-2023, 1, 9, 7527, String Orch A, A
+975, 2022-2023, 1, 9, 8421, Tech Training F, B 
+
+2022-2023 | Out of DistrictGrade 9 | Spring
+index: Schl, Year, Tm, Grd, Crs ID, Std Course Title, Mark
+975, 2022-2023, 2, 9, 2412, Korean 1B, C
+975, 2022-2023, 2, 9, 3048, Math IB, C 
+975, 2022-2023, 2, 9, 40040, PE Course 1B, A 
+975, 2022-2023, 2, 9, 6007, Social Science, C 
+975, 2022-2023, 2, 9, 7528, String Orch B, A
+975, 2022-2023, 2, 9, 8421, Tech Training F, B
+
+2023-2024 | Out of DistrictGrade 10 | Fall
+index: Schl, Year, Tm, Grd, Crs ID, Std Course Title, Mark
+975, 2023-2024, 1, 10, 1073, English 1A, A 
+975, 2023-2024, 1, 10, 20000, Korean 2A, B
+975, 2023-2024, 1, 10, 3049, Math IIA, B 
+975, 2023-2024, 1, 10, 40041, PE Course 2A, A
+975, 2023-2024, 1, 10, 55000, Physics In Un A, B
+975, 2023-2024, 1, 10, 6303, US History A, A 
+975, 2023-2024, 1, 10, 7014, Art Studio A, A
+
+2023-2024 | Out of DistrictGrade 10 | Spring
+index: Schl, Year, Tm, Grd, Crs ID, Std Course Title, Mark
+975, 2023-2024, 2, 10, 1075, English 1B, A
+975, 2023-2024, 2, 10, 20001, Korean 2B, C
+975, 2023-2024, 2, 10, 3050, Math IIB, B 
+975, 2023-2024, 2, 10, 40042, PE Course 2B, B
+975, 2023-2024, 2, 10, 55001, Physics In Un B, A
+975, 2023-2024, 2, 10, 6305, US History B, A
+975, 2023-2024, 2, 10, 7015, Art Studio B, A
+
+2024-2025 | University High SchoolGrade 11 | Fall
+index: Schl, Year, Tm, Grd, Crs ID, Std Course Title, Mark
+608, 2024-2025, 1, 11, 1152, AP Eng Lang A, B- 
+608, 2024-2025, 1, 11, 3720, AP Calc AB-A, A- 
+608, 2024-2025, 1, 11, 3817, AP CmpSciA Fall, A
+608, 2024-2025, 1, 11, 38642, HPrincofEn A, A- 
+608, 2024-2025, 1, 11, 55302, AP Physics 1/2A, C 
+608, 2024-2025, 1, 11, 6253, M World Hist A, A 
+608, 2024-2025, 1, 11, 7535, Jazz Ensmble 1A, A- 
+
+2024-2025 | University High SchoolGrade 11 | Spring
+index: Schl, Year, Tm, Grd, Std Course Title, Mark
+608, 2024-2025, 2, 11, AP Comp sci A, B
+608, 2024-2025, 2, 11, AP Calc, B
+608, 2024-2025, 2, 11, AP Lang, A
+608, 2024-2025, 2, 11, Jazz, A
+608, 2024-2025, 2, 11, Principle of Engineering, A
+608, 2024-2025, 2, 11, Modern History, A
 """
 
 # sample data
-unweighted_GPA = 'GPA'
-satScore = 'SAT SCORE'
+unweighted_GPA = '3.4737'
+satScore = '1480'
 extracurriculars = """
-EXTRACURRICULARS
+Extracurricular Activities:
+- Arduino Club President - Led workshops on mechanical assembly and coding.
+- Private Academic Mentor - Supported students academically in core subjects.
+- Volunteer - Assisted individuals with physical disabilities.
+- Basketball & Volleyball Teams - Participated in district-level tournaments.
+
+Projects:
+Smart Car for the Visually Impaired
+- Designed and built an Arduino-based assistive technology smart car.
+- Integrated ultrasonic sensors and buzzers to detect obstacles and provide real-time audio feedback.
+- Programmed in C++ and used serial monitoring for debugging.
+
+Awards:
+- Academic Excellence Award in Middle School
+- Best Drummer Award - Citywide Music Festival (2022)
+
+Skills:
+- Programming: Python, Java, C++, Arduino IDE
+- Tools: Visual Studio Code
+- Soft Skills: Team Collaboration, Leadership
+
+Professional Experience:
+Lead Drummer - Current
+- Coordinated rhythm sections during performances and rehearsals.
+- Mentored junior members and contributed to musical arrangements.
+- Founded a jazz band in middle school, serving as musical leader.
+President, Arduino Club - November 2023 - May 2024
+- Founded and led the school's Arduino club.
+- Organized weekly workshops involving mechanical assembly and coding.
+Private Academic Mentor - Current
+- Mentoring middle school students in English and other core subjects.
+- Assisted with understanding lessons, homework, and test preparation.
+- Developed personalized study plans and provided academic support.
+- Helped mentees build confidence and improve school performance.
+Volunteer - Current
+- Supported individuals with physical disabilities on a weekly basis.
+- Demonstrated perseverance, patience, and compassion.
+- Committed to making a positive impact in the community.
+Teacher's Assistant, Bethel Church, Irvine, CA - July 2024 - Current
+- Oversaw students in recess environments to ensure safety.
+- Supported classroom upkeep, organized books and materials.
 """
-applicantPool = 'APPLICANT POOL'
-major_interest = """MAJOR INTEREST
+applicantPool = 'Domestic, California Resident'
+major_interest = """robotics, 
+                    electrical engineering, 
+                    mechanical engineering,
+                    computer science,
                     """
 other_details = "none"
 
