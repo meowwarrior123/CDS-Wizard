@@ -89,7 +89,7 @@ def attemptCdsRetrieval(links):
 def getCDS(collegeName: str):
     
     # retrieving CDS
-    braveApiKey = "your api key here"
+    braveApiKey = "your api key"
     search = BraveSearch.from_api_key(api_key=braveApiKey, search_kwargs={"count": 5})
     response = search.run(f"{collegeName} latest CDS data PDF")
     links = []
@@ -110,7 +110,7 @@ def getCDS(collegeName: str):
         try:
             alternateSol = attemptCdsRetrieval(links)
             # college score card
-            scorecardApiKey = "your api key here"
+            scorecardApiKey = "your key here"
             baseURL = f"https://api.data.gov/ed/collegescorecard/v1/schools?api_key={scorecardApiKey}&"
 
             v1 = f"school.name={collegeName}"

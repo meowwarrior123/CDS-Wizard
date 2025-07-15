@@ -87,20 +87,28 @@ invokedAgent = create_tool_calling_agent(
 executor = AgentExecutor(agent=invokedAgent,tools=toolSet,verbose=True)
 
 # test value
-college = 'COLLEGE'
-grade = 'GRADE'
-coursework = """
-COURSEWORK
-"""
+college = 'UCLA'
+grade = 'Sophomore'
+coursework = str(
+    {
+        "algebra1":'A', 
+        "algebra2":'A+', 
+        "precalculus":'B-', 
+        "calculus BC":'A',
+        "AP Lang":'B+',
+        "AP Chemistry":'A-',
+        "Honors Biology":'A'
+    }
+)
 
 # sample data
-unweighted_GPA = 'GPA'
-satScore = 'SAT SCORE'
+unweighted_GPA = '4.0'
+satScore = '1540'
 extracurriculars = """
 EXTRACURRICULARS
 """
-applicantPool = 'APPLICANT POOL'
-major_interest = """MAJOR INTEREST
+applicantPool = 'DOMESTIC'
+major_interest = """COMPUTER SCIENCE
                     """
 other_details = "none"
 
